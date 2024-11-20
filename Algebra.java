@@ -1,7 +1,4 @@
-// Implements algebraic operations and the square root function without using 
-// the Java operations a + b, a - b, a * b, a / b, a % b, and without calling 
-// Math.sqrt. All the functions in this class operate on int values and
-// return int values.
+
 
 public class Algebra {
 	public static void main(String args[]) {
@@ -25,43 +22,77 @@ public class Algebra {
 
 	// Returns x1 + x2
 	public static int plus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		for(int i=0;i<x2;i++){
+			x1++;
+		}
+		return x1;
 	}
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		for(int i=0;i<x2;i++){
+			x1--;
+		}
+		return x1;
 	}
 
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		int b=0;
+		for(int i=0;i<x2;i++){
+			
+			b=plus(b, x1);
+		}
+		return b;
 	}
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
-		// Replace the following statement with your code
-		return 0;
+		int w=1;
+		 for(int i=0;i<n;i++){
+			w=times(w, x);
+		 }
+		return w;
 	}
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		if(x2>x1){
+			return 0;
+		}
+		int a=x2;
+		int sum=1;
+		while(minus(x1, a)>=x2){
+			a=plus(a, x2);
+			sum++;
+		}
+		return sum;
 	}
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		int a= div(x1, x2);
+		int b= times(a, x2);
+		int c=minus(x1, b);
+		return c;
 	}	
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
-		// Replace the following statement with your code
-		return 0;
+		int i=0;
+		int a=0;
+		while (a<x) {
+		a=times(i, i);
+		i++;
+		}	
+		if(a==x){
+			return i-1;
+		}
+		else{
+			return i-2;
+		}
+		
+		
+		
 	}	  	  
 }
