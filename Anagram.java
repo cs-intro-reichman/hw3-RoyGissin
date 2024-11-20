@@ -28,8 +28,8 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		str1=preProcess(str1);
-		str2=preProcess(str2);
+		str1=apreProcess(str1);
+		str2=apreProcess(str2);
 		if(str1.length()!=str2.length()){
 			return false;
 		}
@@ -59,7 +59,7 @@ public class Anagram {
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	public static String preProcess(String str) {
 		String word="";
-		String abc="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		String abc="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY Z";
 		for(int i=0;i<str.length();i++){
 			for(int j=0;j<abc.length();j++){
 				if(str.charAt(i)==abc.charAt(j)){
@@ -87,7 +87,21 @@ public class Anagram {
 			return rand;
 		}
 
-		
+		public static String apreProcess(String str) {
+		String word="";
+		String abc="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		for(int i=0;i<str.length();i++){
+			for(int j=0;j<abc.length();j++){
+				if(str.charAt(i)==abc.charAt(j)){
+					word+=str.charAt(i);
+				}
+			}
+
+
+		}word=word.toLowerCase();
+		return word;
+	} 
+	   
 
 	}
 
