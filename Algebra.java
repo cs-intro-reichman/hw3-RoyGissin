@@ -22,14 +22,30 @@ public class Algebra {
 
 	// Returns x1 + x2
 	public static int plus(int x1, int x2) {
+		if(x2<0){
+			for(int i=0;i>x2;i--){
+			x1--;
+		}
+		return x1;
+	}
+		
 		for(int i=0;i<x2;i++){
 			x1++;
 		}
 		return x1;
+		
+		
 	}
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
+		if(x2<0){
+			for(int i=0;i>x2;i--){
+			x1++;
+		}
+		return x1;
+		}
+
 		for(int i=0;i<x2;i++){
 			x1--;
 		}
@@ -39,12 +55,51 @@ public class Algebra {
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
 		int b=0;
-		for(int i=0;i<x2;i++){
+		if((x2<0 && x1<0)){
+			for(int i=0;i>x2;i--){
+				for(int j=0;j>x1;j--){
+			b++;
+			
+		}
+		
+		}
+		return b;
+	} 
+
+		 if(x1>0&&x2>0){
+			for(int i=0;i<x2;i++){
 			
 			b=plus(b, x1);
 		}
 		return b;
 	}
+		
+		if(x1<0){
+			 b=0;
+			 	for(int i=0;i<x2;i--){
+				for(int j=0;j>x1;j--){
+			b++;
+				}
+			}
+			return minus(0, b);
+		}
+		if(x2<0){
+				for(int i=0;i>x2;i--){
+				for(int j=0;j<x1;j++){
+			b++;
+				}
+			}
+			return minus(0, b);
+		}
+				for(int i=0;i<x2;i++){
+				for(int j=0;j<x1;j++){
+			b++;
+				}
+				}
+					return b;
+
+			}
+	
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
@@ -57,10 +112,37 @@ public class Algebra {
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
-		if(x2>x1){
+		if(x2<0 && x1<0){
+			x2=minus(0, x2);
+			x1=minus(0, x1);
+		}
+		if(x2>x1 && x1>0){
 			return 0;
 		}
+		
+		if( x1<0){
+			x1=minus(0, x1);
+		
 		int a=x2;
+		int sum=1;
+		while(minus(x1, a)>=x2){
+			a=plus(a, x2);
+			sum++;
+		}
+		return minus(0, sum);
+	}
+	if(x2<0){
+		x2=minus(0, x2);
+		
+		int a=x2;
+		int sum=1;
+		while(minus(x1, a)>=x2){
+			a=plus(a, x2);
+			sum++;
+		}
+		return minus(0, sum);
+	}
+	int a=x2;
 		int sum=1;
 		while(minus(x1, a)>=x2){
 			a=plus(a, x2);
@@ -68,6 +150,7 @@ public class Algebra {
 		}
 		return sum;
 	}
+
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
@@ -77,8 +160,12 @@ public class Algebra {
 		return c;
 	}	
 
+
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
+		if(x==0){
+			return 0;
+		}
 		int i=0;
 		int a=0;
 		while (a<x) {
